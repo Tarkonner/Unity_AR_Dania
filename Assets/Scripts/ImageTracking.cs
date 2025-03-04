@@ -18,8 +18,10 @@ public class ImageTracking : MonoBehaviour
 
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
     private Dictionary<string, GameObject> markerPrefabDict = new Dictionary<string, GameObject>();
+    Dictionary<string, List<GameObject>> objectsOnMarker = new Dictionary<string, List<GameObject>>();
 
-
+    [Header("Distance")]
+    [SerializeField] float distanceBetweenElements = .5f;
 
     void Awake()
     {
@@ -27,6 +29,7 @@ public class ImageTracking : MonoBehaviour
         foreach (var entry in markerPrefabs)
         {
             markerPrefabDict[entry.markerName] = entry.prefab;
+            objectsOnMarker.Add(entry.markerName, new List<GameObject>());
         }
     }
 
@@ -75,6 +78,8 @@ public class ImageTracking : MonoBehaviour
             GameObject spawnObject = Instantiate(prefabToSpawn, trackedImage.transform.position, trackedImage.transform.rotation);
             spawnObject.name = imageName + id.ToString();
             spawnedObjects[id.ToString()] = spawnObject;
+
+            objectsOnMarker.Add(imageName, new List<GameObject> { spawnObject });
         }
     }
 
@@ -88,6 +93,45 @@ public class ImageTracking : MonoBehaviour
             if (!spawnedObject.activeSelf)
                 spawnedObject.SetActive(true);
         }
+
+        /*
+        if (spawnedObjects.ContainsKey(trackedImage.trackableId.ToString()))
+        {
+            //Look for same object close by
+            GameObject closetsExitens = null;
+            float currentDistance = 0;
+            foreach (GameObject item in objectsOnMarker[trackedImage.trackableId.ToString()])
+            {
+                float distance = Vector3.Distance(item.transform.position, transform.transform.position);
+                if (distance < distanceBetweenElements)
+                {
+                    if (closetsExitens == null)
+                    {
+                        closetsExitens = item;
+                        currentDistance = distance;
+                    }
+                    else if (closetsExitens != null && currentDistance > distanceBetweenElements)
+                    {
+                        closetsExitens = item;
+                        currentDistance = distance;
+                    }
+                }
+            }
+
+            if(closetsExitens == null)
+            {
+                SpawnObject(trackedImage);
+            }
+            else
+            {
+                closetsExitens.transform.position = trackedImage.transform.position;
+                closetsExitens.transform.rotation = trackedImage.transform.rotation;
+
+                if (!closetsExitens.activeSelf)
+                    closetsExitens.SetActive(true);
+            }
+        }
+        */
     }
 
     private void RemoveObject(ARTrackedImage trackedImage)
