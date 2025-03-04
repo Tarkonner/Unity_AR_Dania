@@ -1,26 +1,50 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
-using System.Collections.Generic;
+using static ImageTracking;
 
 public class ImageTracking : MonoBehaviour
 {
     public ARTrackedImageManager trackedImageManager;
-    public GameObject prefabToSpawn;  // Assign the 3D model prefab in Inspector
+
+    [System.Serializable]
+    public struct MarkerPrefab
+    {
+        public string markerName; // Name of the marker in the XRReferenceImageLibrary
+        public GameObject prefab; // Prefab to spawn for this marker
+    }
+
+    public List<MarkerPrefab> markerPrefabs; // Assign in Inspector
 
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> markerPrefabDict = new Dictionary<string, GameObject>();
+
+    void Awake()
+    {
+        // Convert List to Dictionary for fast lookup
+        foreach (var entry in markerPrefabs)
+        {
+            markerPrefabDict[entry.markerName] = entry.prefab;
+        }
+    }
 
     void OnEnable()
     {
-        trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
+        if (trackedImageManager != null)
+        {
+            trackedImageManager.trackablesChanged.AddListener(OnTrackedImagesChanged);
+        }
     }
 
     void OnDisable()
     {
-        trackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
+        if (trackedImageManager != null)
+        {
+            trackedImageManager.trackablesChanged.RemoveAllListeners();
+        }
     }
 
-    private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
+    private void OnTrackedImagesChanged(ARTrackablesChangedEventArgs<ARTrackedImage> eventArgs)
     {
         foreach (var trackedImage in eventArgs.added)
         {
@@ -32,18 +56,21 @@ public class ImageTracking : MonoBehaviour
             UpdateObjectPosition(trackedImage);
         }
 
-        foreach (var trackedImage in eventArgs.removed)
-        {
-            RemoveObject(trackedImage);
-        }
+        //foreach (var trackedImage in eventArgs.removed)
+        //{
+        //    RemoveObject(trackedImage);
+        //}
     }
 
     private void SpawnObject(ARTrackedImage trackedImage)
     {
-        if (!spawnedObjects.ContainsKey(trackedImage.referenceImage.name))
+        string imageName = trackedImage.referenceImage.name;
+
+        if (!spawnedObjects.ContainsKey(imageName) && markerPrefabDict.ContainsKey(imageName))
         {
+            GameObject prefabToSpawn = markerPrefabDict[imageName];
             GameObject newObject = Instantiate(prefabToSpawn, trackedImage.transform.position, trackedImage.transform.rotation);
-            spawnedObjects[trackedImage.referenceImage.name] = newObject;
+            spawnedObjects[imageName] = newObject;
         }
     }
 
@@ -53,6 +80,9 @@ public class ImageTracking : MonoBehaviour
         {
             spawnedObject.transform.position = trackedImage.transform.position;
             spawnedObject.transform.rotation = trackedImage.transform.rotation;
+
+            if (!spawnedObject.activeSelf)
+                spawnedObject.SetActive(true);
         }
     }
 
@@ -60,8 +90,7 @@ public class ImageTracking : MonoBehaviour
     {
         if (spawnedObjects.TryGetValue(trackedImage.referenceImage.name, out GameObject spawnedObject))
         {
-            Destroy(spawnedObject);
-            spawnedObjects.Remove(trackedImage.referenceImage.name);
+            spawnedObject.SetActive(false); // Disable instead of destroy (better performance)
         }
     }
 }

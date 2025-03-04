@@ -1654,7 +1654,7 @@ MonoBehaviour:
       m_Calls: []
   m_SerializedLibrary: {fileID: 11400000, guid: b708616101e177d4fbe050cdefe81898,
     type: 2}
-  m_MaxNumberOfMovingImages: 1
+  m_MaxNumberOfMovingImages: 4
   m_TrackedImagePrefab: {fileID: 151853163}
 --- !u!114 &443143748
 MonoBehaviour:
@@ -1749,8 +1749,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackedImageManager: {fileID: 443143747}
-  prefabToSpawn: {fileID: 7354092585910723625, guid: 2a3fde6301b2c544c81537b6a0d169c1,
-    type: 3}
+  markerPrefabs:
+  - markerName: QualityMaker
+    prefab: {fileID: 7109682686697656319, guid: 5642b79498b10465fa9219ba4682355b,
+      type: 3}
+  - markerName: ar_marker
+    prefab: {fileID: 7279467769842343898, guid: b1b37ac0eaa6a9a4785fc1f26065e8b3,
+      type: 3}
+  - markerName: ar_marker_1
+    prefab: {fileID: 3745605318107395163, guid: daca7e1cd0a975941a64a8a9cbd8e5e5,
+      type: 3}
+  - markerName: ar_marker_2
+    prefab: {fileID: 613292779795284151, guid: ebd7292e888c84f05924605e51048072, type: 3}
 --- !u!1 &451820663
 GameObject:
   m_ObjectHideFlags: 0
