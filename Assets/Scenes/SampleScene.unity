@@ -502,13 +502,14 @@ MonoBehaviour:
     prefab: {fileID: 5113951003084247136, guid: 3d101b4a688b2244fb7a415b9180b0da,
       type: 3}
   - markerName: ar_marker
-    prefab: {fileID: 7279467769842343898, guid: b1b37ac0eaa6a9a4785fc1f26065e8b3,
+    prefab: {fileID: 5113951003084247136, guid: 3d101b4a688b2244fb7a415b9180b0da,
       type: 3}
   - markerName: ar_marker_1
     prefab: {fileID: 3745605318107395163, guid: daca7e1cd0a975941a64a8a9cbd8e5e5,
       type: 3}
   - markerName: ar_marker_2
     prefab: {fileID: 613292779795284151, guid: ebd7292e888c84f05924605e51048072, type: 3}
+  maxDistance: 2
 --- !u!1 &702413256
 GameObject:
   m_ObjectHideFlags: 0

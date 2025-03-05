@@ -20,8 +20,15 @@ public class ImageTracking : MonoBehaviour
     private Dictionary<string, GameObject> markerPrefabDict = new Dictionary<string, GameObject>();
     Dictionary<string, List<GameObject>> objectsOnMarker = new Dictionary<string, List<GameObject>>();
 
+    //Closet target
+    public static ImageTracking instance;
+    public GameObject closetObject { get; private set; }
+    [SerializeField] float maxDistance = 2;
+
     void Awake()
     {
+        instance = this;
+
         // Convert List to Dictionary for fast lookup
         foreach (var entry in markerPrefabs)
         {
@@ -62,6 +69,23 @@ public class ImageTracking : MonoBehaviour
         //{
         //    RemoveObject(trackedImage);
         //}
+    }
+
+    private void Update()
+    {
+        if (spawnedObjects == null || spawnedObjects.Count == 0)
+            return;
+
+        float closetDistance = maxDistance;
+        foreach (var item in spawnedObjects)
+        {
+            float distance = Vector3.Distance(Camera.main.transform.position, item.Value.transform.position);
+            if(distance < closetDistance)
+            {
+                closetDistance = distance;
+                closetObject = item.Value;
+            }
+        }
     }
 
     private void SpawnObject(ARTrackedImage trackedImage)
