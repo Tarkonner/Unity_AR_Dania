@@ -212,7 +212,6 @@ GameObject:
   - component: {fileID: 443143748}
   - component: {fileID: 443143747}
   - component: {fileID: 443143753}
-  - component: {fileID: 443143754}
   m_Layer: 0
   m_Name: XR Origin (Mobile AR)
   m_TagString: Untagged
@@ -326,7 +325,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443143746}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03d39517968da9248ac8642e2bc66fcf, type: 3}
   m_Name: 
@@ -345,29 +344,6 @@ MonoBehaviour:
   - markerName: ar_marker_2
     prefab: {fileID: 613292779795284151, guid: ebd7292e888c84f05924605e51048072, type: 3}
   distanceBetweenElements: 0.5
---- !u!114 &443143754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443143746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e54b5df76dc499c4ba69bff303a4c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  markerPrefabs:
-  - markerID: QualityMaker
-    prefab: {fileID: 5811970893536397571, guid: 13241d599ff10413498d04c6d683ca10,
-      type: 3}
-  - markerID: ar_marker
-    prefab: {fileID: 3745605318107395163, guid: daca7e1cd0a975941a64a8a9cbd8e5e5,
-      type: 3}
-  - markerID: ar_marker_1
-    prefab: {fileID: 919132149155446097, guid: 1b1d3fffb2c30434b903b78194cc0997, type: 3}
-  - markerID: ar_marker_2
-    prefab: {fileID: 919132149155446097, guid: 504f04868fdec43fea10caa71569c542, type: 3}
 --- !u!1 &702413256
 GameObject:
   m_ObjectHideFlags: 0
