@@ -342,7 +342,8 @@ MonoBehaviour:
     prefab: {fileID: 3745605318107395163, guid: daca7e1cd0a975941a64a8a9cbd8e5e5,
       type: 3}
   - markerName: ar_marker_2
-    prefab: {fileID: 613292779795284151, guid: ebd7292e888c84f05924605e51048072, type: 3}
+    prefab: {fileID: 7207001052808131363, guid: 7233007c1145414449356e040eb3ec54,
+      type: 3}
   distanceBetweenElements: 0.5
 --- !u!1 &702413256
 GameObject:
