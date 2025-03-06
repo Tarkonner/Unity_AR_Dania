@@ -510,6 +510,51 @@ MonoBehaviour:
   - markerName: ar_marker_2
     prefab: {fileID: 613292779795284151, guid: ebd7292e888c84f05924605e51048072, type: 3}
   maxDistance: 2
+--- !u!1 &525373341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 525373343}
+  - component: {fileID: 525373342}
+  m_Layer: 0
+  m_Name: MathGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &525373342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525373341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2228c8abeb1d50439a88d576064104e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  board: {fileID: 2457713792205780974, guid: 6b7a62bf3b6570b41a1d3ccb5f5f7a62, type: 3}
+--- !u!4 &525373343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525373341}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 942.03284, y: 678.7074, z: -396.91183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &702413256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,3 +1180,4 @@ SceneRoots:
   - {fileID: 155534974}
   - {fileID: 443143752}
   - {fileID: 1857991420}
+  - {fileID: 525373343}
