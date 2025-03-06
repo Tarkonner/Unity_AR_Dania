@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ScrollWithStick : MonoBehaviour
 {
+    [SerializeField] GameObject rotateObject;
     public float rotationSpeed = 100f; // Justerbar rotationshastighed
 
     void Update()
@@ -10,6 +11,6 @@ public class ScrollWithStick : MonoBehaviour
             return;
 
         //float horizontalInput = joystick.Horizontal; // Hent joystickets X-værdi
-        transform.Rotate(Vector3.up * -PlayerInput.instance.stickInput.x * rotationSpeed * Time.deltaTime);
+        rotateObject.transform.Rotate(Vector3.up * -PlayerInput.instance.stickInput.x * rotationSpeed * Time.deltaTime);
     }
 }
