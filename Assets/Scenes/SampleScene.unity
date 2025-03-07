@@ -499,16 +499,17 @@ MonoBehaviour:
   trackedImageManager: {fileID: 443143747}
   markerPrefabs:
   - markerName: QualityMaker
-    prefab: {fileID: 5113951003084247136, guid: 3d101b4a688b2244fb7a415b9180b0da,
+    prefab: {fileID: 5451785481370431613, guid: 47e865c3343fd2e4bbb52edc323668ba,
       type: 3}
   - markerName: ar_marker
-    prefab: {fileID: 5113951003084247136, guid: 3d101b4a688b2244fb7a415b9180b0da,
+    prefab: {fileID: 6460999900668827243, guid: 3f8a9d05c27a09d48802189e4705567a,
       type: 3}
   - markerName: ar_marker_1
-    prefab: {fileID: 3745605318107395163, guid: daca7e1cd0a975941a64a8a9cbd8e5e5,
+    prefab: {fileID: 3644264811579882814, guid: 5e23a1c6d3c203e49af4f8177d3b6c2f,
       type: 3}
   - markerName: ar_marker_2
-    prefab: {fileID: 613292779795284151, guid: ebd7292e888c84f05924605e51048072, type: 3}
+    prefab: {fileID: 4043324862108864428, guid: 6b7a62bf3b6570b41a1d3ccb5f5f7a62,
+      type: 3}
   maxDistance: 2
 --- !u!1 &525373341
 GameObject:

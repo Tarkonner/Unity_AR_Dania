@@ -15,12 +15,22 @@ public class Board : MonoBehaviour
     {
         number1 = Random.Range(1, 11);
         number3 = Random.Range(1, 11);
-        result = number1 + number3;
+        result = 0;
 
         UpdateUI();
     }
 
+    void Update()
+    {
+        platform5Text.text = result.ToString();
+    }
+
     private void UpdateUI()
+    {
+        Invoke(nameof(ForceUpdateUI), 0f);
+    }
+
+    private void ForceUpdateUI()
     {
         platform1Text.text = number1.ToString();
         platform3Text.text = number3.ToString();
@@ -31,12 +41,14 @@ public class Board : MonoBehaviour
     {
         result++;
         platform5Text.text = result.ToString();
+        UpdateUI();
     }
 
     public void DecreaseResult()
     {
         result--;
         platform5Text.text = result.ToString();
+        UpdateUI();
     }
 
     public bool CheckAnswer()
