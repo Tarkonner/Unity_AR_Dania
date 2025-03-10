@@ -9,7 +9,7 @@ public class Board : MonoBehaviour
 
     private int number1;
     private int number3;
-    private int result;
+    public int result { get; private set; }
 
     public void InitializeBoard()
     {
@@ -17,18 +17,9 @@ public class Board : MonoBehaviour
         number3 = Random.Range(1, 11);
         result = 0;
 
-        UpdateUI();
+        ForceUpdateUI();
     }
 
-    void Update()
-    {
-        platform5Text.text = result.ToString();
-    }
-
-    private void UpdateUI()
-    {
-        Invoke(nameof(ForceUpdateUI), 0f);
-    }
 
     private void ForceUpdateUI()
     {
@@ -40,15 +31,13 @@ public class Board : MonoBehaviour
     public void IncreaseResult()
     {
         result++;
-        platform5Text.text = result.ToString();
-        UpdateUI();
+        ForceUpdateUI();
     }
 
     public void DecreaseResult()
     {
         result--;
-        platform5Text.text = result.ToString();
-        UpdateUI();
+        ForceUpdateUI();
     }
 
     public bool CheckAnswer()

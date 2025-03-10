@@ -115,7 +115,7 @@ public class ImageTracking : MonoBehaviour
                 spawnedObject.SetActive(true);
 
             
-            if (spawnedObject.TryGetComponent<PlusMarker>(out PlusMarker maker))
+            if (spawnedObject.TryGetComponent(out PlusMarker maker))
             {
                 maker.Test();
             }
