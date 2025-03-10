@@ -6,10 +6,12 @@ public class MathMinigame : MonoBehaviour
 {
 
     public static MathMinigame Instance;
+    public Board board;
 
-    public Board board; 
-    private Coroutine plusCoroutine;
-    private Coroutine minusCoroutine;
+    private bool isIncreasing = false;
+    private bool isDecreasing = false;
+    private float timer = 0f;
+    private float updateRate = 1f;
 
     private void Awake()
     {
@@ -24,56 +26,41 @@ public class MathMinigame : MonoBehaviour
         board.InitializeBoard();
     }
 
+    private void Update()
+    {
+        
+        if (isIncreasing || isDecreasing)
+        {
+            timer += Time.deltaTime;
+            if (timer >= updateRate)
+            {
+                if (isIncreasing) board.IncreaseResult();
+                if (isDecreasing) board.DecreaseResult();
+                timer = 0f; 
+            }
+        }
+    }
+
     public void StartIncreasing()
     {
-        if (plusCoroutine == null)
-        {
-            plusCoroutine = StartCoroutine(IncreaseNumber());
-        }
+        isIncreasing = true;
+        timer = 0f; 
     }
 
     public void StopIncreasing()
     {
-        if (plusCoroutine != null)
-        {
-            StopCoroutine(plusCoroutine);
-            plusCoroutine = null;
-        }
+        isIncreasing = false;
     }
 
     public void StartDecreasing()
     {
-        if (minusCoroutine == null)
-        {
-            minusCoroutine = StartCoroutine(DecreaseNumber());
-        }
+        isDecreasing = true;
+        timer = 0f;
     }
 
     public void StopDecreasing()
     {
-        if (minusCoroutine != null)
-        {
-            StopCoroutine(minusCoroutine);
-            minusCoroutine = null;
-        }
-    }
-
-    private IEnumerator IncreaseNumber()
-    {
-        while (true)
-        {
-            board.IncreaseResult();
-            yield return new WaitForSeconds(1);
-        }
-    }
-
-    private IEnumerator DecreaseNumber()
-    {
-        while (true)
-        {
-            board.DecreaseResult();
-            yield return new WaitForSeconds(1);
-        }
+        isDecreasing = false;
     }
 
     public void CheckResult()
