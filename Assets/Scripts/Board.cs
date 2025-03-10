@@ -16,17 +16,13 @@ public class Board : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
 
-    public void InitializeBoard()
-    {
         number1 = Random.Range(1, 11);
         number3 = Random.Range(1, 11);
         result = 0;
 
         ForceUpdateUI();
     }
-
 
     private void ForceUpdateUI()
     {

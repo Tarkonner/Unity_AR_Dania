@@ -65,10 +65,10 @@ public class ImageTracking : MonoBehaviour
             UpdateObjectPosition(trackedImage);
         }
 
-        //foreach (var trackedImage in eventArgs.removed)
-        //{
-        //    RemoveObject(trackedImage);
-        //}
+        foreach (var trackedImage in eventArgs.removed)
+        {
+            RemoveObject(trackedImage.Value);
+        }
     }
 
     private void Update()

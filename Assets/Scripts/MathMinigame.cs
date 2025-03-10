@@ -13,7 +13,6 @@ public class MathMinigame : MonoBehaviour
     private float timer = 0f;
     private float updateRate = 1f;
 
-    [SerializeField] TextMeshProUGUI testText;
 
     private void Awake()
     {
@@ -23,18 +22,11 @@ public class MathMinigame : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        //board.InitializeBoard();
-        Board.instance.InitializeBoard();
-    }
-
     private void Update()
     {
         
         if (isIncreasing || isDecreasing)
         {
-            testText.text = Board.instance.result.ToString();
             timer += Time.deltaTime;
             if (timer >= updateRate)
             {
