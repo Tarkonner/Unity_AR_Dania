@@ -6,7 +6,7 @@ public class MathMinigame : MonoBehaviour
 {
 
     public static MathMinigame Instance;
-    public Board board;
+    //public Board board;
 
     private bool isIncreasing = false;
     private bool isDecreasing = false;
@@ -25,7 +25,8 @@ public class MathMinigame : MonoBehaviour
 
     private void Start()
     {
-        board.InitializeBoard();
+        //board.InitializeBoard();
+        Board.instance.InitializeBoard();
     }
 
     private void Update()
@@ -33,12 +34,12 @@ public class MathMinigame : MonoBehaviour
         
         if (isIncreasing || isDecreasing)
         {
-            testText.text = board.result.ToString();
+            testText.text = Board.instance.result.ToString();
             timer += Time.deltaTime;
             if (timer >= updateRate)
             {
-                if (isIncreasing) board.IncreaseResult();
-                if (isDecreasing) board.DecreaseResult();
+                if (isIncreasing) Board.instance.IncreaseResult();
+                if (isDecreasing) Board.instance.DecreaseResult();
                 timer = 0f; 
             }
         }
@@ -67,7 +68,7 @@ public class MathMinigame : MonoBehaviour
 
     public void CheckResult()
     {
-        if (board.CheckAnswer())
+        if (Board.instance.CheckAnswer())
         {
             Debug.Log("Korrekt! Tallet stemmer.");
         }

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
+    public static Board instance;
+
     public TextMeshProUGUI platform1Text;
     public TextMeshProUGUI platform3Text;
     public TextMeshProUGUI platform5Text;
@@ -10,6 +12,11 @@ public class Board : MonoBehaviour
     private int number1;
     private int number3;
     public int result { get; private set; }
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void InitializeBoard()
     {
