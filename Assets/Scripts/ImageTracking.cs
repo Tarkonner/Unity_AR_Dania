@@ -122,6 +122,7 @@ public class ImageTracking : MonoBehaviour
     {
         if (spawnedObjects.TryGetValue(trackedImage.trackableId.ToString(), out GameObject spawnedObject))
         {
+
             spawnedObject.transform.position = trackedImage.transform.position;
             spawnedObject.transform.rotation = trackedImage.transform.rotation;
 
