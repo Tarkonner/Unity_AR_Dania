@@ -351,3 +351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5e085e11dfd04459a9e83b75f7fe7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  correctMat: {fileID: 2100000, guid: b51a86d539eaa6d448ba17eac64e0698, type: 2}
+  wrongMat: {fileID: 2100000, guid: f6f873b9a9832834ea6fb13875b76c6e, type: 2}
+  defaultMat: {fileID: 2926557707537190794, guid: f396e3429a4864fc2ad497cb3ce5fe2c,
+    type: 3}
+  resetDelay: 2
+  rendere: {fileID: 8285828795241374411}

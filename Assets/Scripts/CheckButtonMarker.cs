@@ -1,14 +1,34 @@
+using System.Collections;
 using UnityEngine;
 
 public class CheckButtonMarker : MonoBehaviour
 {
+    [SerializeField]
+    private Material correctMat, wrongMat, defaultMat;
+
+    [SerializeField] private float resetDelay = 2f;
+    [SerializeField] private MeshRenderer rendere;
+
     private void OnEnable()
     {
-        MathMinigame.Instance.CheckResult();
+        if (Board.instance.CheckAnswer())
+        {
+            rendere.material = correctMat;
+            StartCoroutine(ResetMaterial());
+
+            Board.instance.ResetBoard();
+        }
+        else
+        {
+            rendere.material = wrongMat;
+            StartCoroutine(ResetMaterial());
+        }
     }
 
-    private void OnDisable()
+    private IEnumerator ResetMaterial()
     {
-        MathMinigame.Instance.StopDecreasing();
+        yield return new WaitForSeconds(resetDelay);
+        rendere.material = defaultMat;
     }
 }
+
