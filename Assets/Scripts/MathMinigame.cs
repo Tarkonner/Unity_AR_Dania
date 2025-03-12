@@ -30,7 +30,10 @@ public class MathMinigame : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= updateRate)
             {
-                if (isIncreasing) Board.instance.IncreaseResult();
+                if (isIncreasing)
+                {
+                    Board.instance.IncreaseResult();
+                }
                 if (isDecreasing) Board.instance.DecreaseResult();
                 timer = 0f; 
             }
