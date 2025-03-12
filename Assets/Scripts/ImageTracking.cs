@@ -62,9 +62,16 @@ public class ImageTracking : MonoBehaviour
 
         foreach (var trackedImage in eventArgs.updated)
         {
-            UpdateObjectPosition(trackedImage);
+            if (trackedImage.trackingState == TrackingState.Tracking)
+            {
+                UpdateObjectPosition(trackedImage);
+            }
+            else if (trackedImage.trackingState == TrackingState.Limited || trackedImage.trackingState == TrackingState.None)
+            {
+                HandleMarkerOutOfView(trackedImage);
+            }
         }
-
+        
         foreach (var trackedImage in eventArgs.removed)
         {
             RemoveObject(trackedImage.Value);
@@ -88,6 +95,13 @@ public class ImageTracking : MonoBehaviour
         }
     }
 
+    private void HandleMarkerOutOfView(ARTrackedImage trackedImage)
+    {
+        if (spawnedObjects.TryGetValue(trackedImage.trackableId.ToString(), out GameObject spawnedObject))
+        {
+            spawnedObject.SetActive(false); // Hide object when marker is lost
+        }
+    }
     private void SpawnObject(ARTrackedImage trackedImage)
     {
         string imageName = trackedImage.referenceImage.name;
@@ -108,17 +122,14 @@ public class ImageTracking : MonoBehaviour
     {
         if (spawnedObjects.TryGetValue(trackedImage.trackableId.ToString(), out GameObject spawnedObject))
         {
+            if (spawnedObject.TryGetComponent(out ILookedAt look))
+                look.LookedAt();
+
             spawnedObject.transform.position = trackedImage.transform.position;
             spawnedObject.transform.rotation = trackedImage.transform.rotation;
 
             if (!spawnedObject.activeSelf)
                 spawnedObject.SetActive(true);
-
-            
-            if (spawnedObject.TryGetComponent(out PlusMarker maker))
-            {
-                maker.Test();
-            }
         }
     }
 
