@@ -122,8 +122,6 @@ public class ImageTracking : MonoBehaviour
     {
         if (spawnedObjects.TryGetValue(trackedImage.trackableId.ToString(), out GameObject spawnedObject))
         {
-            if (spawnedObject.TryGetComponent(out ILookedAt look))
-                look.LookedAt();
 
             spawnedObject.transform.position = trackedImage.transform.position;
             spawnedObject.transform.rotation = trackedImage.transform.rotation;

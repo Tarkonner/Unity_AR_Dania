@@ -47,4 +47,13 @@ public class Board : MonoBehaviour
     {
         return result == (number1 + number3);
     }
+
+    public void ResetBoard()
+    {
+        number1 = Random.Range(1, 11);
+        number3 = Random.Range(1, 11);
+        result = 0;
+
+        ForceUpdateUI();
+    }
 }
