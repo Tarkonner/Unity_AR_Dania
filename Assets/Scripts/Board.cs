@@ -45,7 +45,15 @@ public class Board : MonoBehaviour
 
     public bool CheckAnswer()
     {
-        return result == (number1 + number3);
+        if (result == (number1 + number3))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        //return result == (number1 + number3);
     }
 
     public void ResetBoard()
