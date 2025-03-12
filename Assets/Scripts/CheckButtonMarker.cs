@@ -6,9 +6,4 @@ public class CheckButtonMarker : MonoBehaviour
     {
         MathMinigame.Instance.CheckResult();
     }
-
-    private void OnDisable()
-    {
-        MathMinigame.Instance.StopDecreasing();
-    }
 }
