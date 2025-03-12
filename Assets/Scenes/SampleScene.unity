@@ -540,6 +540,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2228c8abeb1d50439a88d576064104e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  correctMat: {fileID: 2100000, guid: b51a86d539eaa6d448ba17eac64e0698, type: 2}
+  wrongMat: {fileID: 2100000, guid: f6f873b9a9832834ea6fb13875b76c6e, type: 2}
+  defaultMat: {fileID: 2100000, guid: bbb56ac3cf3c61a46ab3887c0fdbda8f, type: 2}
+  gameObj: {fileID: 6460999900668827243, guid: 3f8a9d05c27a09d48802189e4705567a, type: 3}
+  board: {fileID: 2457713792205780974, guid: 6b7a62bf3b6570b41a1d3ccb5f5f7a62, type: 3}
+  resetDelay: 2
 --- !u!4 &525373343
 Transform:
   m_ObjectHideFlags: 0
